@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      width: 260px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #1e1e1e;
+      color: #fff;
+    }
+    h1 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h1 svg {
+      width: 18px;
+      height: 18px;
+    }
+    .status {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 16px;
+    }
+    .status.active {
+      color: #4ade80;
+    }
+    .status.inactive {
+      color: #888;
+    }
+    .status.error {
+      color: #f87171;
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
+    .toggle-label {
+      font-size: 13px;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #444;
+      border-radius: 24px;
+      transition: 0.2s;
+    }
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+    input:checked + .toggle-slider {
+      background: #3b82f6;
+    }
+    input:checked + .toggle-slider:before {
+      transform: translateX(20px);
+    }
+    .btn-row {
+      display: flex;
+      gap: 8px;
+    }
+    button {
+      flex: 1;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    button svg {
+      width: 14px;
+      height: 14px;
+    }
+    .reload-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+    .reload-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .disabled {
+      background: #333 !important;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    .divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 12px 0;
+    }
+    .hint {
+      font-size: 11px;
+      color: #666;
+      margin-top: 12px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="3" width="20" height="14" rx="2"/>
+      <path d="M8 21h8"/>
+      <path d="M12 17v4"/>
+    </svg>
+    Notion Presenter
+  </h1>
+  <p class="status" id="status">Checking...</p>
+
+  <div class="toggle-row">
+    <span class="toggle-label">Auto-inject on Notion</span>
+    <label class="toggle-switch">
+      <input type="checkbox" id="enableToggle">
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
+  <div class="btn-row">
+    <button id="reloadBtn" class="reload-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+        <path d="M3 3v5h5"/>
+      </svg>
+      Reload Script
+    </button>
+  </div>
+
+  <p class="hint">Toggle enables auto-injection on all Notion pages. Use Reload to refresh the script after code changes.</p>
+
+  <script src="popup.js"></script>
+</body>
+</html>
