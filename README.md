@@ -78,4 +78,4 @@ The script:
 
 ## License
 
-MIT
+GPL 3
