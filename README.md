@@ -2,6 +2,8 @@
 
 A presentation mode script for Notion pages that lets you reveal content block-by-block, perfect for presentations and demos.
 
+<img width="1280" height="800" alt="2026-01-10_Notion Personal_17-17-30" src="https://github.com/user-attachments/assets/66e565c4-951e-47e6-ade5-668dcdc52b29" />
+
 ## Features
 
 - Reveal Notion blocks one at a time with keyboard shortcuts
